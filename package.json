@@ -1,0 +1,10 @@
+{
+  "name": "ng-imager",
+  "version": "1.0.0",
+  "description": "Angular 1 wrapper for Imager.js",
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "imager.js": "^0.5.0"
+  }
+}

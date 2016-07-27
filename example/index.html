@@ -1,0 +1,23 @@
+<html ng-app="Example">
+    <body>
+        <div ng-controller="ExampleCtrl">
+            <div class="lots-of-cats" ng-imager options="options"></div>
+        </div>
+    </body>
+
+    <!--<div class="simple-example" data-src="http://loremflickr.com/{width}/500" data-width="300px"></div>-->
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js"></script>
+    <script type="text/javascript" src="example.js"></script>
+    <script type="text/javascript" src="../node_modules/imager.js/dist/Imager.min.js"></script>
+    <script type="text/javascript" src="../src/ng-imager.js"></script>
+    <script>
+        new Imager('.simple-example', {
+        availableWidths: {
+            150: '150',
+            500: '500',
+            640: '640'
+        }
+    });
+    </script>
+</html>

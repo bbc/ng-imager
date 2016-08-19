@@ -14,27 +14,34 @@
 }(this, function (Imager) {
     var ngImager = angular.module('ngImager', []);
 
-    ngImager.directive('ngImager', function(){
+    ngImager.directive('ngImager', function($compile){
         return {
             scope:{
                 options: '='
             },
-            link:function(scope, element, attrs){
-                attrs.$set('data-src', scope.options.dataSrc);
-                attrs.$set('data-alt', scope.options.dataAlt);
-                attrs.$set('data-class', scope.options.dataClass);
-                attrs.$set('data-width', scope.options.dataWidth);
-                new Imager(element, {
-                    availableWidths: scope.options.availableWidths,
-                    widthInterpolator: scope.options.widthInterpolator,
-                    availablePixelRatios: scope.options.availablePixelRatios,
-                    className: scope.options.className || '',
-                    scrollDelay: scope.options.scrollDelay || 250,
-                    onResize: scope.options.onResize || true,
-                    lazyload: scope.options.lazyload || false,
-                    lazyloadOffset: scope.options.lazyloadOffset || 0,
-                    onImagesReplaced: scope.options.onImagesReplaced
-                });
+            link:function(scope, element, attrs){ 
+                function initImager(){
+                    element.html('<div data-src="'+scope.options.dataSrc+'" data-alt="'+scope.options.alt+'" data-class="'+scope.options.dataClass+'" data-width="'+scope.options.dataWidth+'"></div>');   
+                    new Imager(element.children(), {
+                        availableWidths: scope.options.availableWidths,
+                        widthInterpolator: scope.options.widthInterpolator,
+                        availablePixelRatios: scope.options.availablePixelRatios,
+                        className: scope.options.className || '',
+                        scrollDelay: scope.options.scrollDelay || 250,
+                        onResize: scope.options.onResize || true,
+                        lazyload: scope.options.lazyload || false,
+                        lazyloadOffset: scope.options.lazyloadOffset || 0,
+                        onImagesReplaced: scope.options.onImagesReplaced
+                    });
+                }
+
+                initImager();
+
+                scope.$watch('options.dataSrc', function(){
+                   initImager();
+                });   
+
+                
             }                  
         }
     });

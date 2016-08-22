@@ -14,7 +14,7 @@
 }(this, function (Imager) {
     var ngImager = angular.module('ngImager', []);
 
-    ngImager.directive('ngImager', function($compile){
+    ngImager.directive('ngImager', ['$compile', function($compile){
         return {
             scope:{
                 options: '='
@@ -44,6 +44,6 @@
                 
             }                  
         }
-    });
+    }]);
     return ngImager;
 }));

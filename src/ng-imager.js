@@ -21,7 +21,7 @@
             },
             link:function(scope, element, attrs){ 
                 function initImager(){
-                    element.html('<div data-src="'+scope.options.dataSrc+'" data-alt="'+scope.options.alt+'" data-class="'+scope.options.dataClass+'" data-width="'+scope.options.dataWidth+'"></div>');   
+                    element.html('<div data-src="'+scope.options.dataSrc+'" data-alt="'+scope.options.dataAlt+'" data-class="'+scope.options.dataClass+'"></div>');   
                     new Imager(element.children(), {
                         availableWidths: scope.options.availableWidths,
                         widthInterpolator: scope.options.widthInterpolator,

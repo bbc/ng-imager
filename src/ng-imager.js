@@ -37,9 +37,11 @@
 
                 initImager();
 
-                scope.$watch('options.dataSrc', function(){
-                   initImager();
-                });   
+                scope.$watch('options.dataSrc', function(newValue, oldValue){
+                   if (newValue !== oldValue) {
+                        initImager();
+                    }
+                });  
 
                 
             }                  
